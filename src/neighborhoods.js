@@ -1,4 +1,4 @@
-const neighborhoods = {
+const features = {
   type: "FeatureCollection",
   features: [
     {
@@ -43355,4 +43355,294 @@ const neighborhoods = {
     }
   ]
 };
-export default neighborhoods;
+
+const neighborhoods = [
+    {
+        "id": 1,
+        "neighborhood": "Bayview Hunters Point",
+        "population": 37694,
+        "mean_age": 36,
+        "mean_income": 61353
+    },
+    {
+        "id": 2,
+        "neighborhood": "Bernal Heights",
+        "population": 26705,
+        "mean_age": 39,
+        "mean_income": 124244
+    },
+    {
+        "id": 3,
+        "neighborhood": "Castro/Upper Market",
+        "population": 21875,
+        "mean_age": 40,
+        "mean_income": 136211
+    },
+    {
+        "id": 4,
+        "neighborhood": "Chinatown",
+        "population": 14539,
+        "mean_age": 50,
+        "mean_income": 26254
+    },
+    {
+        "id": 5,
+        "neighborhood": "Excelsior",
+        "population": 40414,
+        "mean_age": 42,
+        "mean_income": 75782
+    },
+    {
+        "id": 6,
+        "neighborhood": "Financial District/South Beach",
+        "population": 18259,
+        "mean_age": 41,
+        "mean_income": 111294
+    },
+    {
+        "id": 7,
+        "neighborhood": "Glen Park",
+        "population": 8310,
+        "mean_age": 42,
+        "mean_income": 130422
+    },
+    {
+        "id": 8,
+        "neighborhood": "Golden Gate Park",
+        "population": 84,
+        "mean_age": 38,
+        "mean_income": 131333
+    },
+    {
+        "id": 9,
+        "neighborhood": "Haight Ashbury",
+        "population": 18285,
+        "mean_age": 35,
+        "mean_income": 144774
+    },
+    {
+        "id": 10,
+        "neighborhood": "Hayes Valley",
+        "population": 18636,
+        "mean_age": 35,
+        "mean_income": 105615
+    },
+    {
+        "id": 11,
+        "neighborhood": "Inner Richmond",
+        "population": 22555,
+        "mean_age": 36,
+        "mean_income": 97269
+    },
+    {
+        "id": 12,
+        "neighborhood": "Inner Sunset",
+        "population": 28836,
+        "mean_age": 38,
+        "mean_income": 121316
+    },
+    {
+        "id": 13,
+        "neighborhood": "Japantown",
+        "population": 3740,
+        "mean_age": 54,
+        "mean_income": 65536
+    },
+    {
+        "id": 14,
+        "neighborhood": "Lakeshore",
+        "population": 14155,
+        "mean_age": 30,
+        "mean_income": 46385
+    },
+    {
+        "id": 15,
+        "neighborhood": "Lincoln Park",
+        "population": 304,
+        "mean_age": 65,
+        "mean_income": 149250
+    },
+    {
+        "id": 16,
+        "neighborhood": "Lone Mountain/USF",
+        "population": 18373,
+        "mean_age": 32,
+        "mean_income": 105473
+    },
+    {
+        "id": 17,
+        "neighborhood": "Marina",
+        "population": 25120,
+        "mean_age": 34,
+        "mean_income": 137025
+    },
+    {
+        "id": 18,
+        "neighborhood": "McLaren Park",
+        "population": 782,
+        "mean_age": 42,
+        "mean_income": 16016
+    },
+    {
+        "id": 19,
+        "neighborhood": "Mission",
+        "population": 58630,
+        "mean_age": 36,
+        "mean_income": 100218
+    },
+    {
+        "id": 20,
+        "neighborhood": "Mission Bay",
+        "population": 11425,
+        "mean_age": 33,
+        "mean_income": 141588
+    },
+    {
+        "id": 21,
+        "neighborhood": "Nob Hill",
+        "population": 26600,
+        "mean_age": 37,
+        "mean_income": 82103
+    },
+    {
+        "id": 22,
+        "neighborhood": "Noe Valley",
+        "population": 23262,
+        "mean_age": 39,
+        "mean_income": 145810
+    },
+    {
+        "id": 23,
+        "neighborhood": "North Beach",
+        "population": 12117,
+        "mean_age": 41,
+        "mean_income": 75162
+    },
+    {
+        "id": 24,
+        "neighborhood": "Oceanview/Merced/Ingleside",
+        "population": 28465,
+        "mean_age": 40,
+        "mean_income": 79881
+    },
+    {
+        "id": 25,
+        "neighborhood": "Outer Mission",
+        "population": 24482,
+        "mean_age": 41,
+        "mean_income": 88167
+    },
+    {
+        "id": 26,
+        "neighborhood": "Outer Richmond",
+        "population": 45563,
+        "mean_age": 42,
+        "mean_income": 87936
+    },
+    {
+        "id": 27,
+        "neighborhood": "Pacific Heights",
+        "population": 24113,
+        "mean_age": 36,
+        "mean_income": 130177
+    },
+    {
+        "id": 28,
+        "neighborhood": "Portola",
+        "population": 16749,
+        "mean_age": 41,
+        "mean_income": 83331
+    },
+    {
+        "id": 29,
+        "neighborhood": "Potrero Hill",
+        "population": 14114,
+        "mean_age": 36,
+        "mean_income": 168461
+    },
+    {
+        "id": 30,
+        "neighborhood": "Presidio",
+        "population": 4117,
+        "mean_age": 29,
+        "mean_income": 195375
+    },
+    {
+        "id": 31,
+        "neighborhood": "Presidio Heights",
+        "population": 10503,
+        "mean_age": 38,
+        "mean_income": 132995
+    },
+    {
+        "id": 32,
+        "neighborhood": "Russian Hill",
+        "population": 18248,
+        "mean_age": 37,
+        "mean_income": 125150
+    },
+    {
+        "id": 33,
+        "neighborhood": "Seacliff",
+        "population": 2497,
+        "mean_age": 46,
+        "mean_income": 161523
+    },
+    {
+        "id": 34,
+        "neighborhood": "South of Market",
+        "population": 19984,
+        "mean_age": 45,
+        "mean_income": 72676
+    },
+    {
+        "id": 35,
+        "neighborhood": "Sunset/Parkside",
+        "population": 83536,
+        "mean_age": 42,
+        "mean_income": 98933
+    },
+    {
+        "id": 36,
+        "neighborhood": "Tenderloin",
+        "population": 29036,
+        "mean_age": 42,
+        "mean_income": 31889
+    },
+    {
+        "id": 37,
+        "neighborhood": "Treasure Island",
+        "population": 3129,
+        "mean_age": 25,
+        "mean_income": 52143
+    },
+    {
+        "id": 38,
+        "neighborhood": "Twin Peaks",
+        "population": 7762,
+        "mean_age": 44,
+        "mean_income": 113987
+    },
+    {
+        "id": 39,
+        "neighborhood": "Visitacion Valley",
+        "population": 19159,
+        "mean_age": 38,
+        "mean_income": 58187
+    },
+    {
+        "id": 40,
+        "neighborhood": "West of Twin Peaks",
+        "population": 39245,
+        "mean_age": 44,
+        "mean_income": 145972
+    },
+    {
+        "id": 41,
+        "neighborhood": "Western Addition",
+        "population": 22861,
+        "mean_age": 38,
+        "mean_income": 69125
+    }
+];
+export {features, neighborhoods};
