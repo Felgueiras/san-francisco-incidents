@@ -21,6 +21,7 @@ class MapUtils {
     map.scrollWheelZoom.disable();
     map.boxZoom.disable();
     map.keyboard.disable();
+    map.dragging.disable();
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -46,6 +47,7 @@ class MapUtils {
       if (!props) return;
       // get neighborhood for props
       const n = neighborhoods.find((n) => n.neighborhood === props.nhood);
+      const { regression } = predictions[props.nhood];
       const { mean_age, mean_income, population } = n;
       // TODO use icons
       this._div.innerHTML = `<div>
@@ -56,6 +58,8 @@ class MapUtils {
                 <p>${mean_age}</p>
                 <h4>Mean income</h4>
                 <p>${mean_income}</p>
+                <h4>Regression</h4>
+                <p>${regression}</p>
                 <div>`;
     };
 
@@ -89,7 +93,7 @@ class MapUtils {
       });
     }
 
-    const style = (feature) => {
+    const featureStyle = (feature) => {
       return {
         fillColor: this.getColor(
           grades.indexOf(predictions[feature.properties.nhood].classification)
@@ -103,7 +107,7 @@ class MapUtils {
     };
 
     geoJSON = L.geoJson(features, {
-      style,
+      style: featureStyle,
       onEachFeature,
     }).addTo(map);
     featureInfo.addTo(map);
