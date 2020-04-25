@@ -57,7 +57,7 @@ const SetupPrediction = ({ updatePredictions }) => {
 
   return (
     <div style={getModalStyle()} className={classes.paper}>
-      <h4 id="simple-modal-title">Configure prediction</h4>
+      <h4 id="simple-modal-title">Make prediction</h4>
       <div className="grid">
         {/*date picker*/}
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

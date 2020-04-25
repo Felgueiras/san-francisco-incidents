@@ -49,16 +49,15 @@ class MapUtils {
       const n = neighborhoods.find((n) => n.neighborhood === props.nhood);
       const { regression } = predictions[props.nhood];
       const { mean_age, mean_income, population } = n;
-      // TODO use icons
       this._div.innerHTML = `<div>
- <b>${props.nhood}</b>
+                    <b>${props.nhood}</b>
                 <h4>Population</h4>
                 <p>${population}</p>
                 <h4>Mean age</h4>
                 <p>${mean_age}</p>
                 <h4>Mean income</h4>
                 <p>${mean_income}</p>
-                <h4>Regression</h4>
+                <h4>Nº of predicted crimes</h4>
                 <p>${regression}</p>
                 <div>`;
     };
@@ -119,12 +118,13 @@ class MapUtils {
 
       // loop through our density intervals and generate a label with a colored square for each interval
       for (let i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-          '<i style="background:' +
-          new MapUtils().getColor(i) +
-          '"></i> ' +
-          grades[i] +
-          "<br>";
+        div.innerHTML += `
+<div>
+<i style="background:${new MapUtils().getColor(i)}"></i>
+<p>
+${grades[i]}
+</p>
+</div>`;
       }
 
       return div;
