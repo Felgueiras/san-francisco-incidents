@@ -11,22 +11,23 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import SanFranciscoAPI from "../utils/SanFranciscoAPI";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { green } from "@material-ui/core/colors";
 
 function getModalStyle() {
-  const top = 50;
-  const left = 50;
+  const top = 25;
+  const left = 25;
 
   return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    top: `${top}px`,
+    left: `${left}px`,
   };
 }
 
-const ConfigurePrediction = ({ neighborhood }) => {
+const SetupPrediction = ({ updatePredictions }) => {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   const [period, setPeriod] = React.useState("");
-  const [prediction, setPrediction] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   const handlePeriodChange = (event) => {
     setPeriod(event.target.value);
@@ -36,35 +37,40 @@ const ConfigurePrediction = ({ neighborhood }) => {
     setSelectedDate(date);
   };
 
-  const fetchClassification = () => {
+  const fetchPrediction = () => {
+    setLoading(true);
     const convertDate = (selectedDate) => {
-      return `${2020}-${selectedDate.getMonth() + 1}-${selectedDate.getDay()}`;
+      return `${2020}-${selectedDate.getMonth() + 1}-${selectedDate.getDate()}`;
     };
     SanFranciscoAPI()
-      .classificationCustom(neighborhood, convertDate(selectedDate), period)
-      .then(({ prediction }) => {
-        console.log(prediction);
-        setPrediction(prediction);
+      .predictionDate(convertDate(selectedDate), period)
+      .then((prediction) => {
+        updatePredictions(prediction);
+        setLoading(false);
       });
   };
 
   const classes = useStyles();
   const periods = ["Morning", "Afternoon", "Evening", "Night"];
+  const minDate = new Date();
+  const maxDate = new Date().setDate(minDate.getDate() + 7);
 
   return (
     <div style={getModalStyle()} className={classes.paper}>
-      <h2 id="simple-modal-title">Configure prediction for {neighborhood}</h2>
+      <h4 id="simple-modal-title">Configure prediction</h4>
       <div className="grid">
         {/*date picker*/}
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             disableToolbar
             variant="inline"
-            format="MM/dd/yyyy"
+            format="dd/MM/yyyy"
             margin="normal"
             id="date-picker-inline"
-            label="Date picker inline"
+            label="Date"
             value={selectedDate}
+            minDate={minDate}
+            maxDate={maxDate}
             onChange={handleDateChange}
             KeyboardButtonProps={{
               "aria-label": "change date",
@@ -85,10 +91,20 @@ const ConfigurePrediction = ({ neighborhood }) => {
           </Select>
         </FormControl>
       </div>
-      <Button variant="contained" color="primary" onClick={fetchClassification}>
-        Predict
-      </Button>
-      {prediction && <p>{prediction}</p>}
+      <div className={classes.wrapper}>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={loading || !period}
+          className={classes.button}
+          onClick={fetchPrediction}
+        >
+          Predict
+          {loading && (
+            <CircularProgress size={24} className={classes.buttonProgress} />
+          )}
+        </Button>
+      </div>
     </div>
   );
 };
@@ -96,12 +112,24 @@ const ConfigurePrediction = ({ neighborhood }) => {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 400,
+    width: 250,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    zIndex: 2,
+  },
+  wrapper: {
+    margin: theme.spacing(1),
+    position: "relative",
+  },
+  button: {
+    textAlign: "center",
+  },
+  buttonProgress: {
+    color: green[500],
+    position: "absolute",
   },
 }));
 
-export default ConfigurePrediction;
+export default SetupPrediction;

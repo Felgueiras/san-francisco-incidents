@@ -1,11 +1,17 @@
-import { features, neighborhoods } from "./neighborhoods";
+import features from "./utils/features";
 const grades = ["Reduce", "Moderated", "High"];
+let map;
+
 class MapUtils {
-  createMap = (classifications, featureClickHandler) => {
+  createMap = (neighborhoods, predictions, featureClickHandler) => {
     const { L } = window;
     let geoJSON;
 
-    const map = L.map("mapid", { zoomControl: false }).setView(
+    if (map) {
+      map.off();
+      map.remove();
+    }
+    map = L.map("mapid", { zoomControl: false }).setView(
       [37.75398, -122.431297],
       13
     );
@@ -86,7 +92,7 @@ class MapUtils {
     const style = (feature) => {
       return {
         fillColor: this.getColor(
-          grades.indexOf(classifications[feature.properties.nhood])
+          grades.indexOf(predictions[feature.properties.nhood].classification)
         ),
         weight: 2,
         opacity: 1,
