@@ -38,3 +38,9 @@
   transform: translate(-50%, -50%);
   margin: 0;
 }
+
+
+.div-icon{
+  font-size: 18px;
+  text-align: center;
+}

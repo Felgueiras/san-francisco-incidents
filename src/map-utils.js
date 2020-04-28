@@ -1,4 +1,5 @@
 import features from "./utils/features";
+import React from "react"
 const grades = ["Reduce", "Moderated", "High"];
 let map;
 
@@ -131,6 +132,39 @@ ${grades[i]}
     };
 
     legend.addTo(map);
+
+    const centerPoint = (points) => {
+
+      const reduced = points.reduce((acc, val) => {
+        return {
+          lat: acc.lat + val[1],
+          lng: acc.lng + val[0],
+        }
+      }, {
+        lat: 0,
+        lng: 0
+      });
+
+      return [reduced.lat / points.length, reduced.lng / points.length]
+    };
+
+    features.features.forEach(feature => {
+
+      const { nhood } = feature.properties;
+      const { coordinates } = feature.geometry;
+      const polygonFeaturesCoordinates = coordinates[0][0]
+      const center = centerPoint(polygonFeaturesCoordinates);
+      // marker coordinates
+      const myIcon = L.divIcon({
+        className: 'div-icon',
+        html: `<div>${nhood}</div>`
+      });
+      const marker = L.marker(center, { icon: myIcon });
+      // marker.bindTooltip(nhood)
+      marker.addTo(map);
+
+    });
+    // TODO: add tooltips / divicon
 
     return map;
   };
