@@ -1,4 +1,4 @@
-Front-end for San Francisco incidents prediction visualization, developed in a Masters Dissertation context by @LMFonseca.
+Front-end for San Francisco incidents prediction visualization, developed in a Masters Dissertation context by [@LMFonseca](https://github.com/LMFonseca).
 
 ## UI
 - select the day and period for prediction
