@@ -1,5 +1,7 @@
 Front-end for San Francisco incidents prediction visualization, developed in a Masters Dissertation context by [@LMFonseca](https://github.com/LMFonseca).
 
+![Image description](./screenshot.png)
+
 ## UI
 - select the day and period for prediction
 - hovering over a neighborhood displays further info on the top right corner
