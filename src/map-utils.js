@@ -17,12 +17,12 @@ class MapUtils {
       13
     );
 
-    map.touchZoom.disable();
-    map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
-    map.boxZoom.disable();
-    map.keyboard.disable();
-    map.dragging.disable();
+    // map.touchZoom.disable();
+    // map.doubleClickZoom.disable();
+    // map.scrollWheelZoom.disable();
+    // map.boxZoom.disable();
+    // map.keyboard.disable();
+    // map.dragging.disable();
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -52,6 +52,7 @@ class MapUtils {
       const { mean_age, mean_income, population } = n;
       this._div.innerHTML = `<div>
                     <b>${props.nhood}</b>
+                    <p>
                 <h4>Population</h4>
                 <p>${population}</p>
                 <h4>Mean age</h4>

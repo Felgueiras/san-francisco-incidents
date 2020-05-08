@@ -69,7 +69,7 @@ const SetupPrediction = ({ updatePredictions }) => {
             id="date-picker-inline"
             label="Date"
             value={selectedDate}
-            minDate={minDate}
+            /*minDate={minDate}*/
             maxDate={maxDate}
             onChange={handleDateChange}
             KeyboardButtonProps={{
